@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Main>
+  
+  <Information>
+    Okay, so I thought that I would end this part of the tutorial about Reflection, with a cool and useful example. It's a bit bigger than the usual examples here at the site, but hopefully you will find it really useful. It uses a bunch of the stuff that we have looked into during the last couple of chapters, so hopefully you can keep up.
+
+    A common scenario when creating any sort of application, is the desire to save the users settings. When you get several settings, you will probably create a Settings class, which will handle loading and saving of the desired settings. Each time you need a new setting in your Settings class, you will have to update the Load() and Save() methods, to include this new setting. But hey, why not let the Settings class discover its own properties and then load and save them automatically? With Reflection, it's quite easy, and if you have read the other chapters in the Reflection section of this tutorial, you should be able to understand the following example.
+
+    To make it fit better into a small example, I am saving information about a person instead of application settings, but hopefully you will get the general idea anyway. Please be aware that using Reflection WILL be slower than reading and writing known properties manually, so you should consider when to use it and when to opt for a faster approach! Also, in our example, we use a simple text file for storing even simpler values, only separated by a | (pipe character). If you're using this for real world stuff, you will probably want a better format for your data, perhaps XML. And of course, there is not much error handling, so you should probably add some of that as well.
+
+    Okay, let's get started. First, our Person class, which you can simply rename to Settings or something like that, to make it more useful to you:
+  </Information>
+  <Reference>
+    For more reference please look at http://csharp.net-tutorials.com
+  </Reference>
+    
+</Main>
+  
