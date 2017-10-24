@@ -18,7 +18,11 @@ namespace ReflectionTest
         static void Main(string[] args)
         {
             TypeUsage();
+            Console.WriteLine();
             ExecutingAssembly();
+            Console.WriteLine();
+            InstantiateByReflection();
+            Console.WriteLine();
             Console.WriteLine("a+b+c=" + (a + b + c));
             Console.WriteLine("Please enter the name of the variable that you wish to change during the runtime:");
             string varName = Console.ReadLine();
@@ -55,6 +59,27 @@ namespace ReflectionTest
             Type[] assemblyTypes = assembly.GetTypes();
             foreach (Type t in assemblyTypes)
                 Console.WriteLine(t.Name);
+            Console.ReadKey();
+        }
+
+        private static void InstantiateByReflection()
+        {
+            Type testType = typeof(TestClassforInstantiate);
+            ConstructorInfo ctor1 = testType.GetConstructor(System.Type.EmptyTypes);
+            var t=new Type[1] { typeof(int) };
+            ConstructorInfo ctor2 = testType.GetConstructor(t);
+            if (ctor1 != null)
+            {
+                object instance = ctor1.Invoke(null);
+                MethodInfo methodInfo = testType.GetMethod("TestMethod");
+                Console.WriteLine("Default constractor invoke instance calling method:" + methodInfo.Invoke(instance, new object[] { 10 }));
+            }
+            if (ctor2 != null)
+            {
+                object instance = ctor2.Invoke(new object[]{10});
+                MethodInfo methodInfo = testType.GetMethod("TestMethod");
+                Console.WriteLine("Custom constractor invoke instance calling method:" + methodInfo.Invoke(instance, new object[] {10}));
+            }
             Console.ReadKey();
         }
     }
