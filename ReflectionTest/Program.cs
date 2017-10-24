@@ -18,6 +18,7 @@ namespace ReflectionTest
         static void Main(string[] args)
         {
             TypeUsage();
+            ExecutingAssembly();
             Console.WriteLine("a+b+c=" + (a + b + c));
             Console.WriteLine("Please enter the name of the variable that you wish to change during the runtime:");
             string varName = Console.ReadLine();
@@ -45,6 +46,15 @@ namespace ReflectionTest
             Console.WriteLine(test.GetType().Name);  //Name property return the currency Type
             Console.WriteLine(typeof(Int32).FullName); //Name property return the currency Type NameSpace.Class etc
             Console.WriteLine(typeof(Program).FullName);
+            Console.ReadKey();
+        }
+
+        private static void ExecutingAssembly()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly(); //In this term we own two Types in executing assmbly NewClass & Program
+            Type[] assemblyTypes = assembly.GetTypes();
+            foreach (Type t in assemblyTypes)
+                Console.WriteLine(t.Name);
             Console.ReadKey();
         }
     }
